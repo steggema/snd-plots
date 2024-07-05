@@ -14,3 +14,5 @@ samples = [
     Sample('neu_40_50', ['/Users/jan/cernbox/snd_ak/neu_40_50_hits0.pt'], 'neutron', 1.0),
     Sample('neu_70_80', ['/Users/jan/cernbox/snd_ak/neu_70_80_hits0.pt'], 'neutron', 1.0),
 ]
+
+d_samples = {sample.name: sample for sample in samples}
