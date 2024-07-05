@@ -1,5 +1,6 @@
 import numpy as np
 import awkward as ak
+from tqdm import tqdm
 
 from samples import samples, d_samples
 from vars import vars, d_vars
@@ -8,7 +9,7 @@ from vars import vars, d_vars
 def process_sample(sample, replace='targets') -> dict:
     out = {}
 
-    for file in sample.get_files():
+    for file in tqdm(sample.get_files()):
         hits = ak.from_parquet(file)
         if sample.class_select >= 0:
             targets = ak.from_parquet(file.replace('hits', replace))
@@ -25,9 +26,7 @@ def process_sample(sample, replace='targets') -> dict:
 
 
 if __name__ == '__main__':
-    distributions = {}
     for sample in samples:
         print(f'Processing {sample.name}')
-        distributions[sample.name] = process_sample(sample)
-
-    np.savez_compressed('distributions.npz', distributions)
+        distributions = process_sample(sample)
+        np.savez_compressed(f'distributions_{sample.name}.npz', distributions)
