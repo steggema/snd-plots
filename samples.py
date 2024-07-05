@@ -3,6 +3,7 @@ import os
 from Sample import Sample
 
 base_dir = '/afs/cern.ch/user/s/steggema/work/snd_lx9/data'
+base_dir = '/Users/jan/cernbox/snd_ak_new/'
 
 samples = [
     Sample('nu_e', [os.path.join(base_dir, 'neutrino/*hits.pt')], 'electron neutrino', 1.0, 0),
