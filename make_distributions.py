@@ -61,4 +61,4 @@ if __name__ == '__main__':
         distributions[sample.name] = calculate_input_vars(hits)
         del hits
 
-    np.save('distributions.npy', distributions)
+    np.savez_compressed('distributions.npz', distributions)
