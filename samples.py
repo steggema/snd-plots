@@ -23,6 +23,6 @@ samples = [
 ]
 
 for i in range(10):
-    samples.append(Sample(f'data_2023_{i}', [os.path.join(base_dir, 'data_2023/*{i}_hits.pt')], 'data', 1.0))
+    samples.append(Sample(f'data_2023_{i}', [os.path.join(base_dir, f'data_2023/*{i}_hits.pt')], 'data', 1.0))
 
 d_samples = {sample.name: sample for sample in samples}
