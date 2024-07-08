@@ -20,7 +20,9 @@ samples = [
     Sample('neu_70_80', [os.path.join(base_dir, 'neu_70_80/*hits.pt')], 'neutron', 1.0),
     Sample('neu_80_90', [os.path.join(base_dir, 'neu_80_90/*hits.pt')], 'neutron', 1.0),
     Sample('neu_90_100', [os.path.join(base_dir, 'neu_90_100/*hits.pt')], 'neutron', 1.0),
-    Sample('data_2023', [os.path.join(base_dir, 'data_2023/*hits.pt')], 'data', 1.0),
 ]
+
+for i in range(10):
+    samples.append(Sample(f'data_2023_{i}', [os.path.join(base_dir, 'data_2023/*{i}_hits.pt')], 'data', 1.0))
 
 d_samples = {sample.name: sample for sample in samples}
