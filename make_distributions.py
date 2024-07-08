@@ -12,7 +12,7 @@ def process_sample(sample, replace='targets') -> dict:
     for file in tqdm(sample.get_files()):
         hits = ak.from_parquet(file)
         if sample.class_select >= 0:
-            targets = ak.from_parquet(file.replace('hits', replace))
+            targets = ak.from_parquet(file.replace('hits', replace), columns=['det', 'strip_z', 'vertical'])
             hits = hits[targets.pdg == sample.class_select]
             del targets
         
