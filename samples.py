@@ -5,7 +5,12 @@ from Sample import Sample
 base_dir = '/afs/cern.ch/user/s/steggema/work/snd_lx9/data'
 # base_dir = '/Users/jan/cernbox/snd_ak_new/'
 
-samples = [
+samples = []
+
+for i in range(10):
+    samples.append(Sample(f'data_2023_{i}', [os.path.join(base_dir, f'data_2023/*{i}_hits.pt')], 'data', 1.0))
+
+samples += [
     Sample('nu_e', [os.path.join(base_dir, 'neutrino/*hits.pt')], 'electron neutrino', 1.0, 0),
     Sample('nu_mu', [os.path.join(base_dir, 'neutrino/*hits.pt')], 'muon neutrino', 1.0, 1),
     Sample('nu_tau', [os.path.join(base_dir, 'neutrino/*hits.pt')], 'tau neutrino', 1.0, 2),
@@ -21,8 +26,5 @@ samples = [
     Sample('neu_80_90', [os.path.join(base_dir, 'neu_80_90/*hits.pt')], 'neutron', 1.0),
     Sample('neu_90_100', [os.path.join(base_dir, 'neu_90_100/*hits.pt')], 'neutron', 1.0),
 ]
-
-for i in range(10):
-    samples.append(Sample(f'data_2023_{i}', [os.path.join(base_dir, f'data_2023/*{i}_hits.pt')], 'data', 1.0))
 
 d_samples = {sample.name: sample for sample in samples}

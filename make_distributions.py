@@ -22,6 +22,9 @@ def process_sample(sample, replace='targets') -> dict:
             else:
                 out[var.name] = ak.concatenate([out[var.name], var.func(hits)], axis=0)
 
+                print('Using nbytes', out[var.name].nbytes)
+        
+        del hits
     return out
 
 
