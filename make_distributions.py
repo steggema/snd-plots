@@ -18,11 +18,9 @@ def process_sample(sample, replace='targets') -> dict:
         
         for var in vars:
             if var.name not in out:
-                out[var.name] = var.func(hits)
+                out[var.name] = ak.values_astype(var.func(hits), var.type)
             else:
-                out[var.name] = ak.concatenate([out[var.name], var.func(hits)], axis=0)
-
-                print('Using nbytes', out[var.name].nbytes)
+                out[var.name] = ak.concatenate([out[var.name], ak.values_astype(var.func(hits), var.type)], axis=0)
         
         del hits
     return out

@@ -7,3 +7,4 @@ class Var:
     func: Callable
     title: str = ''
     unit: str = ''
+    type: str = 'int16'
