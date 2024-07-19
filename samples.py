@@ -26,19 +26,19 @@ samples += [
     Sample('neu_60_70', [os.path.join(base_dir, 'neu_60_70/*hits.pt')], 'neutron', 25, 490000),
     Sample('neu_70_80', [os.path.join(base_dir, 'neu_70_80/*hits.pt')], 'neutron', 15, 493000),
     Sample('neu_80_90', [os.path.join(base_dir, 'neu_80_90/*hits.pt')], 'neutron', 10, 495000),
-    Sample('neu_90_100', [os.path.join(base_dir, 'neu_90_100/*hits.pt')], 'neutron', 8, 494408),
+    # Sample('neu_90_100', [os.path.join(base_dir, 'neu_90_100/*hits.pt')], 'neutron', 8, 494408),
 
-    Sample('K_5_10', [os.path.join(base_dir, 'K_5_10/*hits.pt')], 'kaon', 1.0, 1986000), # 14800000 high_stat
-    Sample('K_10_20', [os.path.join(base_dir, 'K_20_30/*hits.pt')], 'kaon', 685.2 + 27.8, 1986000),
-    Sample('K_20_30', [os.path.join(base_dir, 'K_20_30/*hits.pt')], 'kaon', 217.8 + 27.9, 995000),
-    Sample('K_30_40', [os.path.join(base_dir, 'K_30_40/*hits.pt')], 'kaon', 90.7 + 21.3, 996000),
-    Sample('K_40_50', [os.path.join(base_dir, 'K_40_50/*hits.pt')], 'kaon', 70.2 + 10.3, 997000),
-    Sample('K_50_60', [os.path.join(base_dir, 'K_50_60/*hits.pt')], 'kaon', 80, 490000), # starting from here numbers very approximate
-    Sample('K_60_70', [os.path.join(base_dir, 'K_60_70/*hits.pt')], 'kaon', 65, 437000),
-    Sample('K_70_80', [os.path.join(base_dir, 'K_70_80/*hits.pt')], 'kaon', 50, 358341),
-    Sample('K_80_90', [os.path.join(base_dir, 'K_80_90/*hits.pt')], 'kaon', 35, 403000),
-    Sample('K_90_100', [os.path.join(base_dir, 'K_90_100/*hits.pt')], 'kaon', 20, 372428),
-    Sample('data_2023', [], 'neutron', 1.0),
+    # Sample('K_5_10', [os.path.join(base_dir, 'K_5_10/*hits.pt')], 'kaon', 1.0, 1986000), # 14800000 high_stat
+    # Sample('K_10_20', [os.path.join(base_dir, 'K_20_30/*hits.pt')], 'kaon', 685.2 + 27.8, 1986000),
+    # Sample('K_20_30', [os.path.join(base_dir, 'K_20_30/*hits.pt')], 'kaon', 217.8 + 27.9, 995000),
+    # Sample('K_30_40', [os.path.join(base_dir, 'K_30_40/*hits.pt')], 'kaon', 90.7 + 21.3, 996000),
+    # Sample('K_40_50', [os.path.join(base_dir, 'K_40_50/*hits.pt')], 'kaon', 70.2 + 10.3, 997000),
+    # Sample('K_50_60', [os.path.join(base_dir, 'K_50_60/*hits.pt')], 'kaon', 80, 490000), # starting from here numbers very approximate
+    # Sample('K_60_70', [os.path.join(base_dir, 'K_60_70/*hits.pt')], 'kaon', 65, 437000),
+    # Sample('K_70_80', [os.path.join(base_dir, 'K_70_80/*hits.pt')], 'kaon', 50, 358341),
+    # Sample('K_80_90', [os.path.join(base_dir, 'K_80_90/*hits.pt')], 'kaon', 35, 403000),
+    # Sample('K_90_100', [os.path.join(base_dir, 'K_90_100/*hits.pt')], 'kaon', 20, 372428),
+    Sample('data_2023', [], 'Observed', 1.0),
 
 ]
 
