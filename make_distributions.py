@@ -1,3 +1,5 @@
+import gc
+
 import numpy as np
 import awkward as ak
 from tqdm import tqdm
@@ -12,7 +14,7 @@ def process_sample(sample, replace='targets.') -> dict:
     for file in tqdm(sample.get_files()):
         hits = ak.from_parquet(file)
         if sample.class_select >= 0:
-            targets = ak.from_parquet(file.replace('hits.', replace), columns=['det', 'strip_z', 'vertical'])
+            targets = ak.from_parquet(file.replace('hits.', replace), columns=['pdg'])
             hits = hits[targets.pdg == sample.class_select]
             del targets
         
@@ -23,6 +25,7 @@ def process_sample(sample, replace='targets.') -> dict:
                 out[var.name] = ak.concatenate([out[var.name], ak.values_astype(var.func(hits), var.type)], axis=0)
         
         del hits
+        gc.collect()
     return out
 
 

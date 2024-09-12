@@ -22,28 +22,28 @@ def determine_bins(data) -> tuple[int, int]:
 
 def make_plot(inputs: dict, name: str, n_bins=25, xlabel: str = '', ylabel: str = 'Events', logy: bool = False, lumi: float = 1.0):
     plt.clf()
-    processes = [s.process for s in samples]
+    processes = list(set([s.process for s in samples]))
     
     x_min, x_max = determine_bins(inputs.values())
 
     if x_min == x_max:
-        print('Skipping', name, 'because either empty or constant', len(inputs.values()))
+        print('Skipping', name, 'because either empty', len(inputs.values()), 'or constant', x_min, x_max)
         return
 
     c_ax = hist.axis.StrCategory(processes, name='cat', label='Process')    
     ax = hist.axis.Regular(n_bins, x_min, x_max, flow=False, name='x', label=d_vars[name].title)
     cat_hists = hist.Hist(ax, c_ax)
     data_hist = hist.Hist(ax)
-    for label, data in inputs.items():
+    for label, events in inputs.items():
         if 'data' in d_samples[label].name:
-            data_hist.fill(x=data)
+            data_hist.fill(x=events)
             continue
-        weight = lumi*d_samples[label].xsec/d_samples[label].n_ev_produced*ak.ones_like(data)
-        cat_hists.fill(x=data, cat=d_samples[label].process, weight=weight)
+        weight = lumi*d_samples[label].xsec/d_samples[label].n_ev_produced*ak.ones_like(events)
+        cat_hists.fill(x=events, cat=d_samples[label].process, weight=weight)
 
     stack = cat_hists.stack('cat')
     stack[::-1].plot(stack=True, histtype='fill')
-    data_hist.plot(histtype='errorbar')
+    # data_hist.plot(histtype='errorbar')
     plt.legend()
     # plt.show()
     plt.savefig(f'plots/{name}.png')
